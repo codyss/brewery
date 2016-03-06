@@ -15,5 +15,6 @@ app.controller('ReviewController', function($scope, ReviewFactory, $state) {
 
 app.controller('ProductReviewsController', function($scope, productReviews) {
   $scope.productReviews = productReviews;
+  console.log(productReviews)
 
 })

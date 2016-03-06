@@ -5,15 +5,15 @@
       <div class="form">
         <div class="field-row" id="contact-form">
 
-          <div ng-init="rating = star.rating + 3"></div>
+          <div ng-init="rating = 3"></div>
 
-          <star-rating class="star-rating" star-rating rating-value="rating" on-rating-selected="rateFunction(rating)"></star-rating>
+          <star-rating class="star-rating" rating-value="rating" ></star-rating>
           <br>
 
           <textarea rows="10" ng-model="reviewContent" class="required md-input form-control" placeholder="Write your reivew here" value="" name="review_text" id="review_text"></textarea>
           <span class="error"></span>
         </div>
-        <input type="submit" class="btn-default btn" value="Submit" ng-click="saveReview(product.id)"/>
+        <input type="submit" class="btn-default btn" value="Submit" ng-click="saveReview(product._id)"/>
       </div>
   </div>
   </div>

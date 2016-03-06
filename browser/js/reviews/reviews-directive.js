@@ -1,7 +1,11 @@
 app.directive('reviewBox', function(ReviewFactory) {
   return {
     restrict: 'E',
-    templateUrl: 'js/reviews/templates/reviewBox.html',
+    template: '<div id="container">'+
+                '<h4>{{review.user}}</h4>'+
+                  '<star-rating rating-value="review.stars" read="true"></star-rating>'+
+                '<p>{{review.content}}</p>'+
+              '</div>',
     scope: {
       review: '=',
     }
@@ -21,11 +25,15 @@ app.directive('reviewWriter', function(ReviewFactory) {
 app.directive('starRating', function(ReviewFactory) {
   return {
     restrict: 'E',
-    templateUrl: 'js/reviews/templates/ratingStars.html',
+    template: '<ul class="rating">'+
+                '<li ng-repeat="star in stars" ng-class="{filled: star.filled}" ng-click="toggle($index)">'+
+                  '<span class="glyphicon glyphicon-star rating-star"></span>'+
+                '</li>'+
+              '</ul>',
     controller: 'ReviewController',
     scope: {
         ratingValue: '=',
-        onRatingSelect: '&',
+        // onRatingSelect: '&',
         read: '='
       },
     link: function(scope, element, attributes) {
@@ -48,7 +56,6 @@ app.directive('starRating', function(ReviewFactory) {
       scope.$watch('ratingValue', function(oldValue, newValue) {
         if (newValue) {
           updateStars();
-          console.log(oldValue);
         }
       });
     }
